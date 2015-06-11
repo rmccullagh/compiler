@@ -1,0 +1,2 @@
+#!/bin/bash
+cc -Wall -Wextra stack.c parser.c ast.c lexer.c main.c -o main
