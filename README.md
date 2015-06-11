@@ -11,6 +11,7 @@ identifed in the BTree.value.type as IS_OP;
 
 Implementation
 
+```
 typedef enum OPType {
 	OP_ADD,
 	OP_SUB,
@@ -18,13 +19,17 @@ typedef enum OPType {
 	OP_DIV,
 	OP_ASSIGN
 } OPType;
+```
 
+```
 typedef enum ValueType {
 	IS_OP,
 	IS_INT,
 	IS_IDEN
 } ValueType;
+```
 
+```
 typedef struct BTree BTree;
 typedef struct Value {
 	ValueType type;
@@ -34,12 +39,15 @@ typedef struct Value {
 		char* str;
 	} u1;
 } Value;
+```
 
+
+```
 typedef struct BTree {
 	struct BTree* left, right;
 	struct Value* value;
 } BTree;
-
+```
 
 Example
 	main "name=2+10*20/2"
