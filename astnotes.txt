@@ -1,0 +1,41 @@
+T: = A - B
+
+		:=
+	   /  \
+	 T     -
+	      / \
+		 A   B
+		 
+MOVE aPLace,Reg
+SUB	 bPlace,Reg
+MOVE Reg,T
+
+
+Program: a + b * c
+
+		+
+	  /  \
+	 id   *
+		 / \
+		id  id
+
+Grammar:
+E : E * E 
+  | E + E
+  | id
+ 
+ 
+expr 
+	: expr '+' expr 	{ $$ = ast_create_op(OP_PLUS, $1, $2);	}
+	| expr '*' exp		{ $$ = ast_create_op(OP_MUL, $1, $2);   }
+	| LPAREN exp RPAREN { $$ = $2; 								}
+	| NUM				{ $$ = ast_create_num($1);				}
+	;
+	
+	
+	
+	
+	
+	
+	
+	

@@ -47,20 +47,14 @@ void preorder(BTree* node)
 		return;
 	}
 
+	if(node->left != NULL || node->right != NULL) {
+		printf("(");
+	}
 	process_node(node->value);		
-	if(node->value->type == IS_OP) {
-		printf("(");	
-	}
 	preorder(node->left);
-	if(node->value->type == IS_OP) {
-		printf(")");	
-	}
-	if(node->value->type == IS_OP) {
-		printf("(");	
-	}
 	preorder(node->right);
-	if(node->value->type == IS_OP) {
-		printf(")");	
+	if(node->left != NULL || node->right != NULL) {
+		printf(")");
 	}
 }
 
@@ -149,10 +143,10 @@ void process_node(Value* value)
 			}
 		break;
 		case IS_INT:
-			printf("%lli", value->u1.value);
+			printf("%lli ", value->u1.value);
 		break;
 		case IS_IDEN:
-			printf("%s", value->u1.str);
+			printf(" %s", value->u1.str);
 		break;
 		default:
 			printf("invalid value type\n");
@@ -185,6 +179,7 @@ int main(int argc, char** argv)
 		preorder(node);
 		printf("\n** end **\n");
 		printf("\n%lli\n", eval(node));
+		//generate_code(node);
 	}
 
 	parser_shutdown(parser);
